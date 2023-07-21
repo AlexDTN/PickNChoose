@@ -28,6 +28,14 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err)); // return error if there is one
 });
 
+// DELETE request to /users/:id
+router.route('/:id').delete((req, res) => {
+  User.findByIdAndDelete(req.params.id) // find user with the given id and delete
+    .then(() => res.json('User deleted.')) // return message if successful
+    .catch(err => res.status(400).json('Error: ' + err)); // return error if there is one
+});
+
+
 
 
 module.exports = router;
